@@ -1,2 +1,2 @@
-# shell_scripts
+# shell scripts
 Collection of bash shell scripts
