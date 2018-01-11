@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# shell script to create a directory and add a text file
+# to that directory
+
+# get the directory name
+read -p "Enter directory name: " dirname
+
+if mkdir $dirname; 
+then
+    # let the user know dir was created
+    echo directory $dirname created
+
+    # change to the created directory
+    cd $dirname
+
+    # prompt user to create a text file
+    read -p "Let's create a text file. Enter file name:" flname
+    filename="$flname.txt"
+    if touch $filename;
+    then
+        date=$(date) 
+        read -p "Enter some notes for your text file: " note
+        # redirect the output of the echo command to the file
+        echo "$date: $note" >> "$filename" 
+        echo "Note $note saved to $filename"
+        # list the contents of the directory
+        ls -l
+        echo good bye
+    else
+        echo failed to create text file
+    fi
+else
+    echo failed to create directory;
+fi
